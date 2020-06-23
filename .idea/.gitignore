@@ -1,2 +1,6 @@
 # Default ignored files
 /workspace.xml
+/dataSources/8406e62b-3973-4fcb-8aa1-9dd2a3c1221f.xml
+/dataSources.local.xml
+/dataSources.xml
+/dataSources/8406e62b-3973-4fcb-8aa1-9dd2a3c1221f/storage_v2/_src_/schema/information_schema.FNRwLQ.meta
