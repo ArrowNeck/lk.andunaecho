@@ -2,25 +2,21 @@ package lk.andunaechomedia.models;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
+@IdClass(lk.andunaechomedia.models.MainSchedulePlayFile.class)
 @Entity
 @Table(
     name = "main_schedule_play_file"
 )
 public class MainSchedulePlayFile implements Serializable {
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(
         name = "schedule_id"
     )
     private MainSchedule mainSchedule;
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(
         name = "file_id"
     )
