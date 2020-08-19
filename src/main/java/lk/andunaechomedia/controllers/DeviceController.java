@@ -1,6 +1,8 @@
 package lk.andunaechomedia.controllers;
 
 import lk.andunaechomedia.dtos.SaveDeviceDto;
+import lk.andunaechomedia.models.Device;
+import lk.andunaechomedia.services.GroupService;
 import lk.andunaechomedia.services.impl.DeviceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -8,11 +10,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+
 @RestController
+//@CrossOrigin(origins = "http://159.203.185.33:3000")
 public class DeviceController  {
 
     @Autowired
     private DeviceServiceImpl deviceService;
+    @Autowired
+    private GroupService groupService;
+
+    @RequestMapping(value = "/get/devices/{groupId}", method = RequestMethod.GET)
+    public HttpEntity<Set<Device>> getDevices(@PathVariable String groupId){
+        return new ResponseEntity(groupService.getDevicesByGroupId(groupId),HttpStatus.OK);
+    }
 
 
     @RequestMapping(method = {RequestMethod.POST}, value = {"/add/Device"})
@@ -26,6 +38,21 @@ public class DeviceController  {
         }
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/device/{device_id}")
+    public HttpEntity<String> deleteDevice(@PathVariable String device_id){
+
+        try {
+            return new ResponseEntity<String>(deviceService.removeDevice(device_id),HttpStatus.OK);
+
+        }
+        catch (Exception e){
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
+}
 //    @RequestMapping(method = {RequestMethod.DELETE}, value = {"/delete/device"})
 //    @ResponseBody
 //    public HttpEntity<SaveDeviceDto> deleteDevice(SaveDeviceDto saveDeviceDto){
@@ -79,18 +106,3 @@ public class DeviceController  {
 //
 //
 //
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete/device/{device_id}")
-    public HttpEntity<String> deleteDevice(@PathVariable String device_id){
-
-        try {
-            return new ResponseEntity<String>(deviceService.removeDevice(device_id),HttpStatus.OK);
-
-        }
-        catch (Exception e){
-            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-        }
-    }
-
-
-
-}

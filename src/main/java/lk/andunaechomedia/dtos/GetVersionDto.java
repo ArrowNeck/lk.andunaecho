@@ -6,5 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GetVersionDto {
-   private int currentVersion;
+   private double currentVersion;
+   private String startTime;
 }

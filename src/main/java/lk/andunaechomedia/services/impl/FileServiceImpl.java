@@ -34,11 +34,13 @@ public class FileServiceImpl implements FileService {
             try {
                 Files.copy(file.getInputStream(),path, StandardCopyOption.REPLACE_EXISTING);
             }
-
             catch (IOException e){
                 System.out.println(e);
             }
             return saveFileDto;
         }
-
+        @Override
+    public boolean findFile(String fileId){
+        return fileRepo.existsById(fileId);
+        }
 }

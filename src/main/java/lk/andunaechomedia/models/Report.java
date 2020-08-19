@@ -1,7 +1,6 @@
 package lk.andunaechomedia.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.util.Date;
 
 

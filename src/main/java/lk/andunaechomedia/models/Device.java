@@ -1,9 +1,5 @@
 package lk.andunaechomedia.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -63,6 +59,8 @@ public  class Device implements Serializable {
 
     }
 
+}
+
     /*public void updatePartial(Device device, String deice_id){
         Device newDevice = deviceRepo.findOne(device_id);
         if (device.getCustomer_name() != null){
@@ -85,5 +83,3 @@ public  class Device implements Serializable {
         }
     }*/
 
-
-}

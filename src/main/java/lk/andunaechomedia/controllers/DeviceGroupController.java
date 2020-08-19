@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+//@CrossOrigin(origins = "http://159.203.185.33:3000")
 public class DeviceGroupController {
     @Autowired
     private GroupService groupService;
@@ -30,12 +31,6 @@ public class DeviceGroupController {
     public HttpEntity<SaveGroupDto> addGroup(@RequestBody SaveGroupDto group) {
 
             return  new ResponseEntity(groupService.saveGroup(group), HttpStatus.CREATED);
-
-
-
-
-
-
     }
 
     @RequestMapping(

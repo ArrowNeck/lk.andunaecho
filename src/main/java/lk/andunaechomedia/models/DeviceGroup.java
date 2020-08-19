@@ -27,15 +27,17 @@ public class DeviceGroup implements Serializable {
     private String groupId;
     private String groupName;
    @JsonBackReference (value = "Device-DeviceGroup")
-//    @OneToMany(mappedBy = "deviceGroup", cascade = {
-//            CascadeType.ALL
-//    })
+
     @OneToMany(mappedBy = "deviceGroup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Device> devices;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "main_schedule_id")
     private MainSchedule mainSchedule;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "temp_id")
+    private TempSchedule tempSchedule;
 
     @Override
     public String toString() {
@@ -46,18 +48,15 @@ public class DeviceGroup implements Serializable {
                 ", mainSchedule=" + mainSchedule +
                 '}';
     }
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "temp_schedule_schedule_id")
-//    private TempSchedule tempSchedule;
-//
-//    public TempSchedule getTempSchedule() {
-//        return tempSchedule;
-//    }
-//
-//    public void setTempSchedule(TempSchedule tempSchedule) {
-//        this.tempSchedule = tempSchedule;
-//    }
-    //@ManyToOne(cascade = CascadeType.ALL)
+
+    public TempSchedule getTempSchedule() {
+        return tempSchedule;
+    }
+
+    public void setTempSchedule(TempSchedule tempSchedule) {
+        this.tempSchedule = tempSchedule;
+    }
+
 
 
 

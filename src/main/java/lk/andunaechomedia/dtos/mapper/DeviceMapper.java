@@ -4,9 +4,7 @@ import lk.andunaechomedia.dtos.SaveDeviceDto;
 import lk.andunaechomedia.models.Device;
 import lk.andunaechomedia.repositories.DeviceGroupRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
-import java.sql.SQLOutput;
 import java.util.Date;
 
 
@@ -29,6 +27,8 @@ public class DeviceMapper {
 
         return device;
     }
+
+}
 //    public static Device deviceDeleteMapToModel(SaveDeviceDto saveDeviceDto){
 //
 //
@@ -36,4 +36,3 @@ public class DeviceMapper {
 //
 //        return device;
 //    }
-}

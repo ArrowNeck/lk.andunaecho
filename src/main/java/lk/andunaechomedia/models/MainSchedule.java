@@ -2,8 +2,6 @@ package lk.andunaechomedia.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -16,29 +14,27 @@ public class MainSchedule {
     @Id
     private String scheduleId;
     private int version;
-    @JsonBackReference("MainScheduleHasFile-MainSchedule")
-    @OneToMany(mappedBy = "mainSchedule", cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
-    private Set<MainSchedulePlayFile> mainSchedulePlayFile;
+    private int noOf_devices;
+    private String startTime;
+
    @JsonBackReference("DeviceGroup-MainSchedule")
     @OneToMany(mappedBy = "mainSchedule",cascade = {CascadeType.ALL})
     private Set<DeviceGroup> groups;
 
-    public MainSchedule() {
-        this.mainSchedulePlayFile = new HashSet();
+    public String getStartTime() {
+        return startTime;
     }
 
-    public MainSchedule(String scheduleId, int version) {
-        this.scheduleId = scheduleId;
-        this.version = version;
-        this.mainSchedulePlayFile = new HashSet();
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public Set<MainSchedulePlayFile> getMainSchedulePlayFile() {
-        return this.mainSchedulePlayFile;
+    public int getNoOf_devices() {
+        return noOf_devices;
     }
 
-    public void setMainSchedulePlayFile(Set<MainSchedulePlayFile> mainSchedulePlayFile) {
-        this.mainSchedulePlayFile = mainSchedulePlayFile;
+    public void setNoOf_devices(int noOf_devices) {
+        this.noOf_devices = noOf_devices;
     }
 
     public Set<DeviceGroup> getGroups() {

@@ -9,4 +9,5 @@ public class SaveGroupDto {
 private String groupId;
 private String name;
 private String scheduleId;
+private String tempScheduleId;
 }

@@ -8,4 +8,5 @@ import lombok.Setter;
 public class SaveScheduleDto {
     private String scheduleId;
     private int version;
+    private  String startTime;
 }
